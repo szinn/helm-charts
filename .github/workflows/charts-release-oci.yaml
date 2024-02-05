@@ -27,14 +27,14 @@ jobs:
           fetch-depth: 0
 
       - name: Install Kubernetes tools
-        uses: yokawasa/action-setup-kube-tools@v0.9.3
+        uses: yokawasa/action-setup-kube-tools@af4ebb1af1efd30c5bd84a2e9773355ad6362a33 # v0.9.3
         with:
           setup-tools: |
             helmv3
           helm: "${{ env.HELM_VERSION }}"
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3
         with:
           registry: ${{ env.TARGET_REGISTRY }}
           username: ${{ secrets.GHCR_USERNAME }}
