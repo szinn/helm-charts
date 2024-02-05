@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  echo-server:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-02-05T13:23:49.148087581Z"
+    description: Echo-server Chart Proof of Concept
+    digest: 40fcbf2571e54827855ab862c858924a9f7973c9acf2449c2d40132ae1114a70
+    name: echo-server
+    type: application
+    urls:
+    - https://szinn.github.io/helm-charts/apps/echo-server-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-02-05T13:23:49.14772721Z"
