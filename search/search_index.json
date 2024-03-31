@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\u200b\\-_,:!=\\[\\]()\"`/]+|\\.(?!\\d)|&[lg]t;|(?!\\b)(?=[A-Z][a-z])","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"helm-charts","text":"<p>Helm Chart Repository for helm charts I've created</p>"}]}
