@@ -49,6 +49,6 @@ jobs:
         with:
           github_token: ${{ steps.app-token.outputs.token }}
           publish_dir: ./site
-          destination_dir: docs
+          destination_dir: .
           user_name: "repo-jeeves[bot]"
           user_email: "repo-jeeves <106431701+repo-jeeves[bot]@users.noreply.github.com>"
