@@ -1,0 +1,27 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "docker:enableMajor",
+    "helpers:pinGitHubActionDigests",
+    ":automergeBranch",
+    ":automergeDigest",
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    ":enablePreCommit",
+    "github>szinn/helm-charts//.github/renovate/automerge-github-actions",
+    "github>szinn/helm-charts//.github/renovate/commit-message",
+    "github>szinn/helm-charts//.github/renovate/pr-labels",
+    "github>szinn/helm-charts//.github/renovate/semantic-commits",
+    "github>szinn/helm-charts//.github/renovate/custom-managers.json5"
+  ],
+  "platform": "github",
+  "username": "repo-jeeves[bot]",
+  "repositories": ["szinn/helm-charts"],
+  "timezone": "America/Toronto",
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "commitBodyTable": true,
+  "rebaseWhen": "conflicted",
+  "platformCommit": true
+}

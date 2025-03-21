@@ -1,0 +1,7 @@
+---
+apiVersion: v2
+description: Echo-server Chart Proof of Concept
+name: echo-server
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

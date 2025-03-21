@@ -1,6 +1,6 @@
-mkdocs~=1.5,>=1.5.3
-mkdocs-material~=9.4
-mkdocs-material-extensions~=1.2
-pygments~=2.16
-pymdown-extensions~=10.2
-mkdocs-minify-plugin~=0.7
+mkdocs1.6.1
+mkdocs-material9.6.9
+mkdocs-material-extensions1.3.1
+pygments2.19.1
+pymdown-extensions10.14.3
+mkdocs-minify-plugin0.8.0

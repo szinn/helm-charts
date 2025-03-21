@@ -5,3 +5,13 @@ name: echo-server
 type: application
 version: 1.0.0
 appVersion: "1.0.0"
+maintainers:
+  - name: szinn
+    email: scotte@zinn.ca
+sources:
+  - https://github.com/szinn/helm-charts
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: |-
+        Initial release

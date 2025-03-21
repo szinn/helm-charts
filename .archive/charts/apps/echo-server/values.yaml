@@ -1,0 +1,14 @@
+---
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+podAnnotations: {}
+podLabels: {}

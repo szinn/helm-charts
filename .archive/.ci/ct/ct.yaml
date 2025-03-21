@@ -8,8 +8,6 @@ helm-extra-args: --timeout 600s
 
 chart-dirs:
   - charts/apps
-  # - charts/library
-  # - charts/other
 
 chart-repos:
   - szinn=https://szinn.github.io/helm-charts

@@ -10,6 +10,12 @@ on:
         default: "[]"
         required: false
         type: string
+      helmVersion:
+        description: >
+          Helm version to use.
+        default: "latest"
+        required: false
+        type: string
 
 env:
   HELM_VERSION: 3.11.2
@@ -26,12 +32,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Kubernetes tools
-        uses: yokawasa/action-setup-kube-tools@9e25a4277af127b60011c95b6ed2da7e3b3613b1 # v0.11.2
+      - name: Install Helm
+        uses: azure/setup-helm@v4.3.0
         with:
-          setup-tools: |
-            helmv3
-          helm: "${{ env.HELM_VERSION }}"
+          version: ${{ inputs.helmVersion }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
@@ -49,8 +53,15 @@ jobs:
             mapfile -t CHART_PATH_PARTS < <(echo "$CHART" | tr '/' '\n')
             CHART_TYPE=${CHART_PATH_PARTS[0]}
             CHART_NAME=${CHART_PATH_PARTS[1]}
+            CHART_TAG_BASE: ghcr.io/szinn/helm
             CHART_VERSION=$(yq e '.version' ${{ env.CHARTS_SRC_DIR }}/${CHART}/Chart.yaml)
 
             helm package "${{ env.CHARTS_SRC_DIR }}/${CHART_TYPE}/${CHART_NAME}" --dependency-update --destination "${{ env.CHARTS_SRC_DIR }}/${CHART_TYPE}" --version "${CHART_VERSION}"
-            helm push "${{ env.CHARTS_SRC_DIR }}/${CHART_TYPE}/${CHART_NAME}-${CHART_VERSION}.tgz" oci://${{ env.TARGET_REGISTRY }}/${{ github.actor }}/helm
+            helm push "${{ env.CHARTS_SRC_DIR }}/${CHART_TYPE}/${CHART_NAME}-${CHART_VERSION}.tgz" oci://${CHART_TAG_BASE} &> push-metadata.txt
+            cat push-metadata.txt
+            CHART_DIGEST=$(awk '/Digest: /{print $2}' push-metadata.txt)
+            cosign sign --yes "${CHART_TAG_BASE}/${CHART_TAG}@${CHART_DIGEST}"
+            cosign verify "${CHART_TAG_BASE}/${CHART_TAG}@${CHART_DIGEST}" \
+              --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+              --certificate-identity "https://github.com/${{ github.repository }}/.github/workflows/chart-release-steps.yaml@${{ github.ref }}"
           done
