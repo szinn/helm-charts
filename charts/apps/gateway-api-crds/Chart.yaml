@@ -1,0 +1,17 @@
+---
+apiVersion: v2
+description: Gateway API CRDs
+name: gateway-api-crds
+type: application
+version: 1.2.1
+appVersion: "1.2.1"
+maintainers:
+  - name: szinn
+    email: scotte@zinn.ca
+sources:
+  - https://github.com/szinn/helm-charts
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: |-
+        Initial release
