@@ -35,11 +35,11 @@ jobs:
 
       - name: Get all added or modified files
         id: added-modified-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
 
       - name: Get changed charts
         id: changed-charts
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
         with:
           matrix: true
           path: charts
