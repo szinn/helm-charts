@@ -40,7 +40,7 @@ runs:
 
     - name: Upload gh-pages artifact
       id: upload-artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
       with:
         name: ${{ inputs.artifactName }}
         path: ${{ runner.temp }}/artifact.tar
